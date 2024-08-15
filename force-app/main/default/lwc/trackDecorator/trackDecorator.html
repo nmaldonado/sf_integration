@@ -1,0 +1,15 @@
+<template>
+    <lightning-card>
+        <lightning-input onchange={handleChange} label="Item"></lightning-input>
+        <lightning-button label="Add" onclick={addNewItem}></lightning-button>
+        <div class="slds-grid slds-wrap">
+            <ol class="slds-list_ordered">
+                <template for:each={itemList} for:item="item" for:index="i">
+                    <div key={item.i}>
+                        <li class="slds-item">{item}</li>
+                    </div>
+                </template>
+            </ol>
+        </div>  
+    </lightning-card>
+</template>

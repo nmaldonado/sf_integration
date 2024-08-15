@@ -1,0 +1,25 @@
+<template>
+    <div class="slds-p-around_medium"> 
+        <!-- loader -->
+        <template lwc:if={loading}>
+            <div class="spinner-container">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- show joke in a card -->
+        <template lwc:if={dadJoke}>
+                <lightning-card>
+                    <h3 slot="title">
+                        <lightning-icon icon-name="utility:smiley_and_people" size="medium"></lightning-icon>
+                        {dadJoke.setup}
+                    </h3>
+                        <p class="slds-p-horizontal_medium">{dadJoke.punchline}</p>
+                    <!-- refresh joke button -->
+                    <div slot="actions" class="slds-align_absolute-bottom">
+                        <lightning-button label="Refresh" title="Refresh" onclick={handleRefresh}></lightning-button>
+                    </div>
+                </lightning-card>                
+        </template>
+    </div>
+</template>

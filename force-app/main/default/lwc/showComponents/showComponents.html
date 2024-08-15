@@ -1,0 +1,36 @@
+<template>
+    <!-- Loader -->
+     <template lwc:if={isLoading}>
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <lightning-spinner
+                    alternative-text="Loading..." variant="brand">
+            </lightning-spinner>
+          </div>
+     </template>
+      <!-- Items iteration -->
+    <lightning-card>
+        <lightning-layout multiple-rows>
+            <template for:each={records} for:item="item">
+                <lightning-layout-item key={item.Id} size="4">
+                <div class="slds-box slds-box_small slds-m-around_small">
+                    <p><strong>Account Name :</strong> {item.Name}</p>
+                    <p><strong>Type :</strong> {item.Type}</p>
+                    <p><strong>Rating :</strong> {item.Rating}</p>
+                    <!-- <lightning-button variant="Brand" label="Delete" title="Delete" onclick={deleteHandler} data-recordid={item.Id}></lightning-button> -->
+                </div>
+                </lightning-layout-item>
+            </template> 
+        </lightning-layout>
+    </lightning-card>
+    
+    <!-- No Records found -->
+    <div if:true={noRecords} class="slds-text-heading_medium">
+        No records found!
+    </div>
+    
+    <!-- Error -->
+    <div if:true={errorOccurred} class="slds-text-heading_medium">
+        <lightning-icon icon-name="utility:error" size="small"></lightning-icon>
+        <span>{errorMessage}</span>
+    </div>
+</template>

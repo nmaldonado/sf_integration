@@ -1,0 +1,9 @@
+<template>
+    <lightning-input type="number" label="Annual Revenue" formatter="Currency" onchange={handleChange} value={annualRevenue}></lightning-input>
+    <lightning-button label="Reset" onclick={reset}></lightning-button>
+    <template lwc:if={accounts.data}>
+        <template for:each={accounts.data} for:item="account">
+             <p key={account.Id}>{account.Name} - {account.AnnualRevenue}</p>
+        </template>
+    </template> 
+</template>
